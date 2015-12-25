@@ -14,32 +14,18 @@ private:
 
 public:
     Student();
-
     QString getName();
-
-    QString getAddress() {
-        return address;
-    }
-
-    int getTelephone() {
-        return telephone;
-    }
-
-    int getAge() {
-        return age;
-    }
-
-    QString getSex() {
-        return sex;
-    }
-
-    int getYearOfStudying() {
-        return yearOfStudying;
-    }
-
-    void setName() {
-
-    }
+    QString getAddress();
+    int getTelephone();
+    int getAge();
+    QString getSex();
+    int getYearOfStudying();
+    void setName(QString);
+    void setAddress(QString);
+    void setTelephone(int);
+    void setAge(int);
+    void setSex(QString);
+    void setYearOfStudying(int);
 };
 
 #endif // STUDENT_H
