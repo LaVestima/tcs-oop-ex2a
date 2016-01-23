@@ -12,20 +12,12 @@ QString Student::getAddress() {
     return address;
 }
 
-int Student::getTelephone() {
-    return telephone;
-}
-
-int Student::getAge() {
+QString Student::getAge() {
     return age;
 }
 
-QString Student::getSex() {
-    return sex;
-}
-
-int Student::getYearOfStudying() {
-    return yearOfStudying;
+Student* Student::getNextItem() {
+    return nextItem;
 }
 
 void Student::setName(QString name) {
@@ -36,18 +28,10 @@ void Student::setAddress(QString address) {
     Student::address = address;
 }
 
-void Student::setTelephone(int telephone) {
-    Student::telephone = telephone;
-}
-
-void Student::setAge(int age) {
+void Student::setAge(QString age) {
     Student::age = age;
 }
 
-void Student::setSex(QString sex) {
-    Student::sex = sex;
-}
-
-void Student::setYearOfStudying(int yearOfStudying) {
-    Student::yearOfStudying = yearOfStudying;
+void Student::setNextItem(Student *next) {
+    nextItem = next;
 }
