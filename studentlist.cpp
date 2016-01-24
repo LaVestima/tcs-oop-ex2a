@@ -11,18 +11,18 @@ void StudentList::setFirstItem(Student firstItem) {
     *StudentList::firstItem = firstItem;
 }
 
-QString StudentList::displayList() {
-    Student *currentItem;
-    QString listString = "";
+//QString StudentList::displayList() {
+//    Student *currentItem;
+//    QString listString = "";
 
-    currentItem = firstItem;
-    while (currentItem != NULL) {
-        listString += currentItem->getName();
-        break; //remove
-    }
+//    currentItem = firstItem;
+//    while (currentItem != NULL) {
+//        listString += currentItem->getName();
+//        break; //remove
+//    }
 
-    return listString;
-}
+//    return listString;
+//}
 
 void StudentList::addItem(Student *tempStudent) {
     Student *newStudent = new Student;
@@ -36,7 +36,23 @@ void StudentList::addItem(Student *tempStudent) {
 }
 
 void StudentList::appendItem(Student *tempStudent) {
+    Student *currentItem = firstItem;
+    Student *newStudent = new Student;
 
+    newStudent->setName(tempStudent->getName());
+    newStudent->setAddress(tempStudent->getAddress());
+    newStudent->setAge(tempStudent->getAge());
+    newStudent->setNextItem(NULL);
+
+    if (currentItem == NULL) {
+        firstItem = newStudent;
+    }
+    else {
+        while (currentItem->getNextItem()) {
+            currentItem = currentItem->getNextItem();
+        }
+        currentItem->setNextItem(newStudent);
+    }
 }
 
 void StudentList::deleteItem(int rowNumber) {
@@ -61,17 +77,42 @@ void StudentList::deleteItem(int rowNumber) {
     delete toDeleteItem;
 }
 
-int StudentList::findItem(QString findWord) {
+int StudentList::findItem(int rowNumber, QString findWord) {
     Student *currentItem = firstItem;
     int findRowNumber = -1;
 
     while (currentItem) {
         findRowNumber++;
-        if (currentItem->getName() == findWord) {
+        if (currentItem->getName() == findWord && findRowNumber > rowNumber) {
             return findRowNumber;
         }
 
         currentItem = currentItem->getNextItem();
     }
     return -1;
+}
+
+void StudentList::editItem(int rowNumber, Student *tempStudent) {
+    Student *currentItem = firstItem;
+    int editRowNumber = -1;
+
+    while (currentItem) {
+        editRowNumber++;
+        if (editRowNumber == rowNumber) {
+            currentItem->setName(tempStudent->getName());
+        }
+        currentItem = currentItem->getNextItem();
+    }
+}
+
+void StudentList::deleteList() {
+    Student *currentItem = firstItem;
+    Student *nextItem;
+
+    while (currentItem) {
+        nextItem = currentItem->getNextItem();
+        delete currentItem;
+        currentItem = nextItem;
+    }
+    firstItem = NULL;
 }

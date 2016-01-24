@@ -27,6 +27,10 @@ private slots:
 
     void on_deleteItemButton_clicked();
 
+    void on_deleteAllButton_clicked();
+
+    void on_editItemButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Student *student;

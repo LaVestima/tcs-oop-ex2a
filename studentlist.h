@@ -18,7 +18,9 @@ public:
     void appendItem(Student *);
     void deleteItem(int);
     void editItem();
-    int findItem(QString);
+    int findItem(int, QString);
+    void editItem(int, Student *);
+    void deleteList();
 };
 
 #endif // STUDENTLIST_H
